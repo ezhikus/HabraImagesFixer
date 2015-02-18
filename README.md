@@ -1,2 +1,2 @@
 # HabraImagesFixer
-Scripts and data for my article about dead images urls fixing on habrahabr.ru
+Набор скриптов и данных для статьи на Хабре по поиску и замене невалидных ссылок на картинки в старых топиках
