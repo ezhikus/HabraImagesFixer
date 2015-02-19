@@ -25,7 +25,7 @@ def get_images_for_topics_range(start_topic_id, end_topic_id):
         for j in current_topic_images:
             ulr_info = str(i) + " " + j
             print(ulr_info);
-            with open('img_info\\' + str(int(i / 10000)), "a") as f:
+            with open('img_info/' + str(int(i / 10000)), "a") as f:
                 f.write(ulr_info + '\n')
         sleep(0.5)
 
