@@ -9,7 +9,7 @@ def check_images():
         for line in in_file:
             url = line.split()[1]
             try:
-                req = requests.head(url, verify=False)
+                req = requests.head(url, verify=False, timeout = 10)
                 print(line.strip())
                 if req.status_code == 200 and 'Content-Type' in req.headers and 'image/' in req.headers['Content-Type']:
                     print(' OK')
@@ -21,7 +21,7 @@ def check_images():
                         out_file.write(line)
                 line_number += 1
                 if line_number % 100 == 0:
-                    print('Processed lines:' + str(line_number) + ' MB')
+                    print('Processed lines:' + str(line_number))
                 sleep(0.1)
             except:
                 with open('img_info/bad_images.txt', "a") as out_file:
