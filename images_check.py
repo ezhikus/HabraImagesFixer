@@ -3,14 +3,22 @@
 import requests
 
 def check_images():
+    line_number = 0
     with open('img_info/all_images.txt', "r") as in_file:
-        with open('img_info/bad_images.txt', "w") as out_file:
-            for line in in_file:
-                print(line)
-                url = line.split()[1]
-                req = requests.get(url)
-                if req.status_code == 200:
-                    print('OK')
-                else:
-                    print('FAIL')
+        for line in in_file:
+            url = line.split()[1]
+            req = requests.head(url, verify=False)
+            print(line.strip())
+            if req.status_code == 200 and 'Content-Type' in req.headers and 'image/' in req.headers['Content-Type']:
+                print(' OK')
+                with open('img_info/good_images.txt', "a") as out_file:
                     out_file.write(line)
+            else:
+                print(' FAIL')
+                with open('img_info/bad_images.txt', "a") as out_file:
+                    out_file.write(line)
+            line_number += 1
+            if line_number % 100 == 0:
+                print('Processed lines:' + str(line_number) + ' MB')
+
+check_images()
