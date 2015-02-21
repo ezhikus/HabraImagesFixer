@@ -7,6 +7,8 @@ def check_images():
     line_number = 0
     with open('img_info/all_images.txt', "r") as in_file:
         for line in in_file:
+            if len(line.split()) < 2:
+                continue
             url = line.split()[1]
             try:
                 req = requests.head(url, verify=False, timeout = 10)
