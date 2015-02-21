@@ -3,9 +3,14 @@
 import requests
 
 def check_images():
-    with open('img_info/all_images.txt', "r") as f:
-        f.write(ulr_info + '\n')
-
-    req = requests.get('http://habrahabr.ru/post/' + str(topic_id) + '/')
-    if req.status_code != 200:
-        return result
+    with open('img_info/all_images.txt', "r") as in_file:
+        with open('img_info/bad_images.txt', "w") as out_file:
+            for line in in_file:
+                print(line)
+                url = line.split()[1]
+                req = requests.get(url)
+                if req.status_code == 200:
+                    print('OK')
+                else:
+                    print('FAIL')
+                    out_file.write(line)
