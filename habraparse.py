@@ -13,9 +13,9 @@ def get_topic_images(topic_id):
     all_images = re.findall(r'<img\s+src="([^"]+)"', req.text)
     
     for image in all_images:
-        if image.find('//habrastorage.org/') != -1 or image.find('mc.yandex.ru/watch') != -1 or image.find('ad.adriver.ru') != -1:
+        if image.find('habrastorage.org/') != -1 or image.find('mc.yandex.ru/watch') != -1 or image.find('ad.adriver.ru') != -1:
             continue
-        if image.find('/images/') == 0 or image.find('habrahabr.ru/i/') != -1 or image.find('geektimes.ru/i/') != -1 or image.find('megamozg.ru/i/') != -1:
+        if image.find('/images/') == 0 or image.find('habrahabr.ru/i') != -1 or image.find('geektimes.ru/i') != -1 or image.find('megamozg.ru/i') != -1:
             continue
         result.add(image)
     return result
