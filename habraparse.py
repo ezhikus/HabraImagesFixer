@@ -26,15 +26,11 @@ def get_images_for_topics_range(start_topic_id, end_topic_id):
         for j in current_topic_images:
             ulr_info = str(i) + " " + j
             print(ulr_info);
-            with open('img_info/' + str(int(i / 10000)), "a") as f:
+            with open('img_info/all_images.txt', "a") as f:
                 f.write(ulr_info + '\n')
         sleep(0.5)
 
-def main():
-    if not os.path.exists('img_info'):
-        os.makedirs('img_info')
-    get_images_for_topics_range(1, 188436) #188436 - info about movement of all new images to habrastorage.org
-    #get_images_for_topics_range(21, 30)
-
-if __name__ == '__main__':
-    main()
+if not os.path.exists('img_info'):
+    os.makedirs('img_info')
+get_images_for_topics_range(1, 188436) #188436 - info about movement of all new images to habrastorage.org
+#get_images_for_topics_range(21, 30)
