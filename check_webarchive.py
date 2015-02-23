@@ -14,7 +14,7 @@ def write_to_fixable(line, new_url):
     with open('img_info/fixable_images.txt', "a") as out_file:
         out_file.write(line.strip() + ' ' + new_url + '\n')
 
-def check_images():
+def check_webarchive():
     line_number = 0
     with open('img_info/bad_images.txt', "r") as in_file:
         for line in in_file:
@@ -44,4 +44,4 @@ def check_images():
             except:
                 write_to_unfixable(line)
 
-check_images()
+check_webarchive()
