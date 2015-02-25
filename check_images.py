@@ -12,7 +12,7 @@ def check_images():
                 continue
             url = line.split()[1]
             try:
-                req = requests.head(url, verify=False, timeout = 8)
+                req = requests.head(url, verify=False, timeout = 8, allow_redirects=True)
                 print(line.strip())
                 if req.status_code == 200 and 'Content-Type' in req.headers and 'image/' in req.headers['Content-Type']:
                     print(' OK')
