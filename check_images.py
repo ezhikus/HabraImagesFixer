@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
 import requests
+import codecs
 from time import sleep
 
 def check_images():
     line_number = 0
-    with open('img_info/all_images.txt', "r") as in_file:
+    with codecs.open('img_info/all_images.txt', "r", "utf-8") as in_file:
         for line in in_file:
             line_number += 1
             if len(line.split()) < 2:
